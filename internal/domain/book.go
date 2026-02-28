@@ -7,17 +7,10 @@ import (
 	"github.com/samber/mo"
 )
 
-// =========================================================
-// 1. ESTRUCTURAS AUXILIARES (¡Esta era la que faltaba!)
-// =========================================================
 type EPUBMetadata struct {
 	Title  string
 	Author string
 }
-
-// =========================================================
-// 2. MANEJO DE ERRORES (Unidad 3)
-// =========================================================
 
 type DomainError struct {
 	Message string
@@ -32,19 +25,11 @@ func NewDomainError(msg string, code int) error {
 	return DomainError{Message: msg, Code: code}
 }
 
-// =========================================================
-// 3. INTERFACES (Unidad 3)
-// =========================================================
-
 type BookRepository interface {
 	FindByID(id BookID) mo.Option[Book]
 	Save(book Book) mo.Result[bool]
 	ListAll() []Book
 }
-
-// =========================================================
-// 4. DOMINIO PRINCIPAL
-// =========================================================
 
 type BookID string
 

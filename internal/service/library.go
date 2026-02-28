@@ -1,3 +1,5 @@
+// Autonomo 1 Jorge Luis Rojas Robles - 2026
+
 package service
 
 import (
@@ -8,7 +10,6 @@ import (
 )
 
 type LibraryService struct {
-	// Mantenemos la Interfaz para cumplir con la Unidad 3
 	repo domain.BookRepository
 }
 
@@ -20,10 +21,6 @@ func (s *LibraryService) ImportBooks(paths []string) []domain.Book {
 
 	// 1. Pipeline de Transformación
 	results := lo.Map(paths, func(path string, _ int) mo.Result[domain.Book] {
-
-		// CORRECCIÓN DEL ERROR "FlatMap":
-		// En lugar de encadenar con FlatMap (que falla al cambiar de tipo),
-		// hacemos la verificación manual (Railway pattern explícito).
 
 		// A. Ejecutamos el Parser
 		resMeta := epub.ParseMetadata(path)
